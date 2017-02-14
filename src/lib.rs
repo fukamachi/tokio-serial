@@ -9,7 +9,6 @@
 //! future releases.
 
 // For now we provide only implementations for unix/termios
-#![cfg(unix)]
 #![deny(missing_docs)]
 
 #[macro_use]
@@ -26,6 +25,10 @@ pub use mio_serial::{BaudRate, DataBits, StopBits, FlowControl, Parity, SerialPo
 
 #[cfg(unix)]
 pub use unix::Serial;
+#[cfg(windows)]
+pub use windows::Serial;
 
 #[cfg(unix)]
 mod unix;
+#[cfg(windows)]
+mod windows;
